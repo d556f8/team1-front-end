@@ -1,0 +1,242 @@
+/* 🟢 모달  🟢*/
+
+/* COMMON */
+.button-custom {
+  color: rgb(54, 120, 226);
+  background: #00000000;
+  font-size: 25px;
+  font-weight: 900;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.button-custom:hover {
+  color: rgb(0, 0, 0);
+  background: #00000000;
+}
+.button-custom:active {
+  background: #00000000;
+  color: rgb(174, 174, 174);
+}
+
+#postModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#postModal .modal-content {
+  width: 1100px;
+  height: 800px;
+}
+
+#postModal .modal-body {
+  display: flex;
+  padding: 0;
+}
+
+/* 1. LEFT */
+
+#postModal .modal-body .modal-left {
+  width: 55%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: auto;
+  background-size: cover;
+}
+#postModal .carousel-inner {
+  background-color: black;
+}
+
+/* 2. RIGHT */
+
+#postModal .modal-body .modal-right {
+  /* background: #ffae5c; */
+  width: 45%;
+}
+
+/* 🟢 TOP - 10% */
+#postModal .modal-body .modal-right .right-top {
+  width: 100%;
+  height: 10%;
+  box-sizing: border-box;
+  border-bottom: solid 1px rgba(161, 160, 160, 0.486);
+}
+#postModal .modal-body .modal-right .right-top-container {
+  margin-left: 10px;
+  height: 100%;
+  /* width: 50\; */
+  display: flex;
+}
+#postModal .modal-body .modal-right .right-top-container .right-top-userimage {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#postModal
+  .modal-body
+  .modal-right
+  .right-top-container
+  .right-top-userimage
+  .top-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+#postModal .modal-body .modal-right .right-top-container .top-item-account {
+  width: 25%;
+  text-align: center;
+  margin: auto 0;
+  padding-left: 30px;
+}
+#postModal
+  .modal-body
+  .modal-right
+  .right-top-container
+  .top-item-account
+  .name {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+/* 🟢  2. MIDDLE 75% */
+
+#postModal .modal-right .modal-middle {
+  width: 100%;
+  height: 75%;
+  margin-top: 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px rgba(161, 160, 160, 0.486);
+}
+
+/* 방문자 글 한줄 */
+#postModal .modal-right .modal-middle .visitor-post,
+#postModal .modal-right .modal-middle .visitor-post::-webkit-scrollbar {
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#postModal .modal-right .modal-middle .visitor-post .visitor-imgBox {
+  width: 100px;
+}
+
+#postModal
+  .modal-right
+  .modal-middle
+  .visitor-post
+  .visitor-imgBox
+  .visitor-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 0 10px 0;
+}
+
+#postModal .comment-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#postModal .comment-item .comment-div {
+  display: flex;
+  margin: 10px 0;
+}
+
+#postModal .comment-item .comment-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#postModal .comment-item .comment-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+#postModal .comment-item .comment-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+#postModal .modal-right .modal-middle .visitor-post .comment .visitor-comment {
+  font-size: medium;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* 🟢 하트 좋아요 5% */
+
+#postModal .modal-right .heart {
+  height: 5%;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px rgba(161, 160, 160, 0.486);
+}
+#postModal .modal-right .heart .heartimg {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+#postModal .modal-body .modal-right .heart .user-count {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+}
+
+/*  🟢 BOTTOM  5% */
+#postModal .modal-right .modal-comment {
+  width: 100%;
+  height: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#postModal .modal-right .modal-comment .modal_bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+#postModal .modal-right .modal-comment .modal-comment-input {
+  width: 85%;
+  font-size: 18px;
+  margin-right: 10px;
+  border: none;
+  outline: none;
+  background: rgba(246, 246, 246, 0);
+  overflow: auto;
+  word-wrap: break-word;
+}
+#postModal .modal-right .modal-comment .posting-push {
+  width: 12%;
+  text-align: center;
+  line-height: 100px;
+  /* -------- */
+  width: 12%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+#postModal .button-custom.show_All {
+  font-size: 14px;
+  color: rgb(115, 115, 115);
+  /* position: relative; */
+  /* left: 1px; */
+  --bs-btn-active-bg: none;
+  width: 100px;
+}

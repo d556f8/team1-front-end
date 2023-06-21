@@ -1,0 +1,96 @@
+.right-nav-container {
+  height: 100vh;
+  width: 360px;
+}
+
+.right-nav-container .right-nav-box {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-nav-container .right-nav-box .right-nav-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-info {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-info .nav-info-img-box {
+  display: block;
+  margin-right: 12px;
+}
+
+.nav-info .nav-info-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-info .nav-info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 260px;
+}
+
+.nav-info .nav-info-text .info-nickname {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-info .nav-info-text .info-name {
+  color: rgb(115, 115, 115);
+  font-size: 14px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.right-nav-body {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-nav-body .right-nav-body-header {
+  margin: 6px 0;
+  color: rgb(115, 115, 115);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.right-nav-body .right-nav-body-content {
+  height: auto;
+  overflow: hidden auto;
+}
+
+.right-nav-body .right-nav-body-content .right-nav-body-content-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.right-nav-item {
+  width: 100%;
+}
+
+.right-nav-item .right-nav-item-contain {
+  padding: 16px 8px 16px 0;
+  display: flex;
+}
+
+@media (max-width: 940px) {
+  .right-nav {
+    display: none !important;
+  }
+}

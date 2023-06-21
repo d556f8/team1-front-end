@@ -1,15 +1,18 @@
-import Main from '../../pages/Main';
+import MainPage from '../../pages/MainPage';
+
+import Post from '../Post';
 import CreatePostModal from '../Modal/CreatePostModal';
 import SearchModal from '../Modal/SearchModal';
 import './Nav.css';
+
 import { exchangeModal } from '../utils/exchangeModal';
+import { exchangeComponent } from '../utils/exchangeComponent';
 
 class Nav extends HTMLDivElement {
-  constructor() {
+  constructor(account) {
     super();
 
-    // this.account = { id, username };
-    this.account = { name: 'juhyeonni123' };
+    this.account = account;
 
     this.classList.add('nav-full');
 
@@ -17,7 +20,7 @@ class Nav extends HTMLDivElement {
       <div class="nav-header-logo">
         <div class="header-logo">
           <div>
-            <object data="/assets/image/insta-logo.svg"></object>
+            <span class="logo-text">2951</span>
           </div>
         </div>
       </div>
@@ -70,13 +73,13 @@ class Nav extends HTMLDivElement {
           </div>
         </div>
       </div>
-      
     `;
     this.navHome = this.querySelector('.nav-home');
     this.navSearch = this.querySelector('.nav-search');
     this.navAdd = this.querySelector('.nav-add');
     this.otherSettings = this.querySelector('.other-settings');
     this.otherActivities = this.querySelector('.other-activities');
+    this.otherLogout = this.querySelector('.other-logout');
 
     // 1. 홈 버튼: 클릭 시 fetch 후 (`root` 모든 것을 재 렌더링), window의 스크롤을 최상단으로 이동
     this.navHome.addEventListener('click', this.homeEvent);
@@ -92,12 +95,20 @@ class Nav extends HTMLDivElement {
 
     // 5. 내 활동 버튼:
     this.otherActivities.addEventListener('click', () => {});
+
+    this.otherLogout.addEventListener('click', () => this.logoutEvent());
+
+    // 로그인 상태가 아니면 만들기 버튼 제거
+    if (!this.account) {
+      this.navAdd.remove();
+    }
   }
 
   // root 재 렌더링
   homeEvent() {
-    const root = document.querySelector('#root');
-    root.innerHTML = new Main().getHtml();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const postContainer = document.querySelector('post-container');
+    exchangeComponent(postContainer, new Post(this.account));
   }
 
   // 만들기 버튼 클릭 시, 기존 Modal을 PostModal로 교체
@@ -108,6 +119,13 @@ class Nav extends HTMLDivElement {
   // 검색 버튼 클릭 시, 기존 Modal을 SearchModal로 교체
   searchEvent() {
     exchangeModal(new SearchModal());
+  }
+
+  logoutEvent() {
+    sessionStorage.removeItem('userToken');
+    const root = document.querySelector('#root');
+    root.innerHTML = '';
+    root.appendChild(new MainPage());
   }
 }
 

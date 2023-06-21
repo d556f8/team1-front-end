@@ -40,6 +40,15 @@
   /* border: 1px solid #000000; */
 }
 
+.nav-full .header-logo .logo-text {
+  color: #262626;
+  font-family: 'Lobster', cursive;
+  font-weight: 100;
+  line-height: 1;
+  margin-left: 10px;
+  font-size: 3em;
+}
+
 .nav-full .nav-list-contain {
   display: flex;
   flex-direction: column;
@@ -115,3 +124,39 @@
 .nav-full .item-name {
   padding-left: 16px;
 }
+
+@media (max-width: 1170px) {
+  .nav-full {
+    /* display: none !important; */
+    width: fit-content;
+  }
+
+  .nav-full .nav-header-logo {
+    display: none !important;
+  }
+
+  .nav-full .nav-list-contain {
+    width: 32px !important;
+  }
+
+  .nav-full .nav-list {
+    width: min-content;
+  }
+
+  .nav-full .nav-list > li,
+  .nav-full .nav-other {
+    width: min-content;
+  }
+
+  .nav-full .nav-list .item-name,
+  .nav-full .nav-other .item-name {
+    display: none !important;
+  }
+}
+
+/* 모바일 nav 생각중 */
+/* @media (max-width: 630px) {
+  .nav-full,
+  .nav-full * {
+  }
+} */

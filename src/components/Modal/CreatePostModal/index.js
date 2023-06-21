@@ -1,14 +1,16 @@
 import './CreatePostModal.css';
-// import Modal from '..';
+
 import { uploadImg } from '../../../api/thumbsnap';
 import { createPost } from '../../../api/posts';
 
-// TODO: 현재 접속한 유저 정보를 받아온다.
+import Post from '../../Post';
+import { exchangeComponent } from '../../utils/exchangeComponent';
+
 class CreatePostModal extends HTMLDivElement {
-  constructor({ name }) {
+  constructor(account) {
     super();
 
-    this.name = name;
+    this.account = account;
 
     this.classList.add('create-post-modal', 'modal-dialog');
     this.setAttribute('role', 'document');
@@ -23,20 +25,20 @@ class CreatePostModal extends HTMLDivElement {
         <div class="modal-body">
           <div class="post-upload-img">
             <label for="uploadImg" class="upload-img-label">
-              <img src="./post-temp1.jpeg" alt="upload-img">
+              <img src="/assets/image/imageupload.svg" alt="upload-img">
             </label>
             <input type="file" name="post-img" id="uploadImg" hidden>
           </div>
           <div class="post-field">
             <div class="user-info">
-              <img class="user-img" src="./juhyeonniinsta.jpg" alt="">
-              <span class="user-name">${this.name}</span>
+              <img class="user-img" src="${this.account.img}" alt="">
+              <span class="user-name">${this.account.nickname}</span>
             </div>
             <textarea class="post-content" placeholder="문구 입력..." maxlength="2000"></textarea>
             <div class="post-assist">
               <div class="emoji-picker">                                     
                 <button type="button" class="btn dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="/assets/image/icons/emoji.svg" alt="">
+                  <img src="/assets/image/icons/emoji.svg" alt="emoji-icon">
                 </button>
                 <div class="dropdown-menu">
                   <button class="btn btn-emoji">😂</button>
@@ -66,7 +68,14 @@ class CreatePostModal extends HTMLDivElement {
 
     // for event
     this.shareBtn = this.querySelector('.btn-share');
-    this.shareBtn.addEventListener('click', () => this.share());
+    this.shareBtn.addEventListener('click', async () => {
+      if (!this.postContent.value) return alert('내용을 입력해주세요.');
+      if (!this.uploadImg.files[0]) return alert('이미지를 업로드해주세요.');
+
+      await this.share();
+      const postComponent = document.querySelector('post-container');
+      exchangeComponent(postComponent, new Post());
+    });
 
     this.previewImg = this.querySelector('.upload-img-label > img');
     this.uploadImg.addEventListener('change', () => this.renderImg());
@@ -101,19 +110,18 @@ class CreatePostModal extends HTMLDivElement {
     this.contentLength.textContent = `${this.postContent.value.length}/2000`;
   }
 
-  // FIXME:
   async share() {
     const file = this.uploadImg.files[0];
     const post = {
-      name: this.name, // 나중에 로그인한 유저 정보를 받아와서 넣어줘야 함
+      name: this.account.nickname,
       post_content: this.postContent.value,
-      post_top_img: '',
+      post_top_img: this.account.img,
       post_main_img: [await uploadImg(file)],
-      statements: [],
+      comments: [],
       likes: 0,
     };
 
-    createPost(post);
+    await createPost(post);
   }
 }
 

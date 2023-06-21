@@ -1,6 +1,7 @@
 .search-modal {
   display: flex;
   justify-content: center;
+  --bs-modal-width: 625px;
 }
 
 .search-modal.modal-dialog {
@@ -8,7 +9,7 @@
 }
 
 .search-modal .search-box {
-  width: 600px;
+  width: 625px;
 
   background-color: white;
   border-radius: 5px;
@@ -66,8 +67,13 @@
 
 .content-item > .content {
   width: 75%;
+  height: 20px;
+
   border: none;
   outline: none;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
 }
 
 .content-item > .username {
@@ -79,4 +85,8 @@
   height: 30px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.search-modal span.highlight {
+  background-color: #faf4c0;
 }

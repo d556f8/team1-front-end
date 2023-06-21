@@ -1,13 +1,12 @@
+const PROXY = process.env.CORS_PROXY;
+const DEST = process.env.IMAGE_UPLOAD_URL;
+const API_KEY = process.env.IMAGE_UPLOAD_API_KEY;
 /**
  * File api를 이용하여 이미지를 업로드합니다.
  * @param {File} file
  * @returns {*} 업로드된 이미지의 url
  */
 export async function uploadImg(file) {
-  const PROXY = process.env.CORS_PROXY;
-  const DEST = process.env.IMAGE_UPLOAD_URL;
-  const API_KEY = process.env.IMAGE_UPLOAD_API_KEY;
-
   const URL = `${PROXY}${DEST}`;
 
   const formData = new FormData();
@@ -23,7 +22,7 @@ export async function uploadImg(file) {
   });
 
   if (!res.ok) {
-    throw new Error(`Failed to upload image, ${res.status}`);
+    throw new Error('An error occurred while uploading the image.');
   }
 
   /**

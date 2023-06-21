@@ -1,11 +1,12 @@
-
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import MainPage from './pages/MainPage.js';
+import StoryPage from './pages/StoryPage.js';
+import LoginPage from './pages/LoginPage.js';
+import SignUpPage from './pages/SignUpPage.js';
 
-import Main from './pages/Main.js';
-import Login from './pages/Login.js';
-import Story from './pages/Story.js';
+var root = document.querySelector('#root');
 
 // 페이지 전환
 // history.pushState(state, title, URL) : 현재 페이지의 상태를 변경하지 않고, 새로운 주소를 추가
@@ -17,42 +18,24 @@ const routerLink = (url) => {
 const router = async () => {
   // 경로 설정
   const routes = [
-    { path: '/', view: Main },
-    { path: '/login', view: Login },
-    { path: '/story', view: Story },
+    { path: '/', view: MainPage },
+    { path: '/login', view: LoginPage },
+    { path: '/story', view: StoryPage },
+    { path: '/signup', view: SignUpPage },
     { path: '/404', view: () => console.log('Viewing 404') },
   ];
 
   // 현재 접속되어있는 주소와 일치하는 경로를 찾기
-  const pageMatch = routes.map((route) => {
-    return {
-      route,
-      isMatch: location.pathname === route.path,
-    };
-  });
-
-  // pageMatch는 배열으로 반환
-  /* 0:
-       isMatch: true
-       route: {path: '/', view: ()} 
-  */
-
-  // isMatch가 true인 route를 찾기
-  let match = pageMatch.find((page) => page.isMatch);
+  const matchedPage = routes.find((route) => route.path === location.pathname);
 
   // 일치하는 경로가 없으면 404(맨 마지막 위치)로 이동
-  if (!match) {
-    match = {
-      route: routes[routes.length - 1],
-      isMatch: true,
-    };
+  if (!matchedPage) {
+    matchedPage = routes[routes.length - 1];
   }
 
-  // view 변수에 현재 경로에 맞는 view를 넣어주기
-  const view = new match.route.view();
-
-  // html을 가져오기
-  document.querySelector('#root').innerHTML = await view.getHtml();
+  root.innerHTML = '';
+  root.appendChild(new matchedPage.view());
+  // root.appendChild(new SignUpPage());
 };
 
 // 뒤로가기나 새로고침을 했을 때 router함수 실행

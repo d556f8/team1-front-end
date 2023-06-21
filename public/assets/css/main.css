@@ -1,5 +1,6 @@
 @import url(./reset.css);
-@import url(//db.onlinewebfonts.com/c/daf8c1a0f06e7a24d9dca48b9d88dac0?family=OratorW01-Medium);
+@import url('http://db.onlinewebfonts.com/c/daf8c1a0f06e7a24d9dca48b9d88dac0?family=OratorW01-Medium');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 a {
   color: #000;
   text-decoration: none !important;
@@ -38,6 +39,10 @@ a {
   padding: 16px !important;
 }
 
+ctm-hashtag {
+  color: #37628b;
+}
+
 :root {
   --max-width: 630px;
 }
@@ -51,16 +56,257 @@ img {
 .main {
   display: flex;
   justify-content: space-between;
+  align-self: auto;
+}
+
+.main .main-nav {
+  position: fixed;
+  width: fit-content;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.main .main-body-wrapper {
+  display: flex;
+  margin-left: auto;
+  width: calc((100%) - 270px);
+}
+
+.main-body-wrapper .right-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .main .main-body {
   width: 630px;
-  margin: 0 auto;
 }
 
-.main .main-nav {
-  margin-right: auto;
-  position: fixed;
+.main .right-nav {
+  padding-left: 60px;
 }
 
-/*# sourceMappingURL=main.css.map */
+@media (max-width: 1170px) {
+  .main .main-body-wrapper {
+    width: calc((100%) - 57px);
+  }
+}
+
+/**************************
+SignUp PAGE - LAYOUT
+**************************/
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  height: 100vh;
+}
+
+#signUpPage .container {
+  display: flex;
+  flex-direction: column;
+  padding: 7em 2em;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+#signUpPage h2 {
+  margin-bottom: 50px;
+  font-size: 1.2em;
+  color: #9c9c9c;
+}
+
+#signUpPage h1 {
+  color: #262626;
+  font-family: 'Lobster', cursive;
+  font-weight: 100;
+  line-height: 1;
+  margin-bottom: 50px;
+  font-size: 5em;
+}
+
+#signUpPage a {
+  color: #000;
+  text-decoration: none;
+}
+
+#signUpPage button {
+  background: none;
+  cursor: pointer;
+  border: none;
+}
+
+#signUpPage .signup-logo {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 3em;
+  margin: 15px 0;
+  font-family: 'Lobster', cursive;
+}
+
+#signUpPage .container_login {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 2em 2em;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+/**************************
+SignUp FORM
+**************************/
+#signUpPage form.signUp_wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+#signUpPage .signUp_wrap input {
+  height: 45px;
+  padding: 0 20px;
+  margin-bottom: 8px;
+  color: #000;
+  background: #fafafa;
+  border-radius: 5px;
+  border: 1px solid #f1f1f1;
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+#signUpPage .signUp_wrap input:focus {
+  border: 1px solid #d6d6d6;
+}
+
+#signUpPage .signUp_wrap button {
+  height: 40px;
+  margin-top: 50px;
+  margin-bottom: -20px;
+  color: #fff;
+  background: #a0d3ff;
+  border-radius: 5px;
+  font-size: 1.2em;
+  line-height: 1;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: default;
+}
+
+#signUpPage .signUp_wrap button.active {
+  background: #52adff;
+  cursor: pointer;
+}
+
+#signUpPage .moveToLogin {
+  text-align: center;
+  color: #52adff;
+}
+
+#login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#login-page .login-container {
+  display: flex;
+}
+#login-page .login-container .login-left-container {
+  background-image: url(https://static.cdninstagram.com/images/instagram/xig/homepage/phones/home-phones.png?__makehaste_cache_breaker=HOgRclNOosk);
+  background-size: cover;
+  height: 500px;
+  width: 380px;
+}
+#login-page .login-container .login-left-container .left-image {
+  font-size: 100%;
+  margin-left: 122px;
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 23px;
+  position: relative;
+}
+#login-page .login-container .login-left-container img {
+  width: 215px;
+  height: 445px;
+  border-radius: 8%;
+  opacity: 0.8;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background-color: #000;
+}
+#login-page .login-container .login-right-container {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#login-page .login-container .login-right-container .right-form {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#login-page .login-container .login-right-container .right-form .login-logo {
+  color: #000 !important;
+  text-decoration: none !important;
+  font-size: 5em;
+  margin: 15px 0;
+  font-family: 'Lobster', cursive;
+}
+#login-page .login-container .login-right-container .right-form #loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login-page
+  .login-container
+  .login-right-container
+  .right-form
+  #loginForm
+  input {
+  height: 36px;
+  width: 100%;
+  margin: 0 20px 10px 20px;
+  box-sizing: border-box;
+  background: #fafafa;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+}
+#login-page .login-container .login-right-container .btn-login {
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+  background: #3897f0;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+#login-page .login-container .login-right-container .right-footer {
+  border: 1px solid #ccc;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+#login-page .login-container .login-right-container .right-footer p {
+  margin: 5px 0;
+}

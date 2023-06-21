@@ -49,6 +49,7 @@
   width: 460px;
   height: 600px;
   margin-bottom: 5px;
+  background-position-x: 12px;
 }
 
 #num-1 .writing .text-write {

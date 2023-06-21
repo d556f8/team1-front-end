@@ -58,6 +58,11 @@
   background-color: transparent;
 }
 
+.header .header-body .story-wrapper .slider-button:active {
+  outline: none;
+  background-color: red;
+}
+
 .next {
   width: 45px;
   height: 45px;

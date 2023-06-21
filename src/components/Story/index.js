@@ -1,20 +1,42 @@
-import { getProfileById, updateProfile, postProfile, getProfiles  } from '../../api/profiles.js';
+import {
+  getProfileById,
+  updateProfile,
+  postProfile,
+  getProfiles,
+} from '../../api/profiles.js';
 import { getAccountById } from '../../api/accounts.js';
 import { exchangeModal } from '../utils/exchangeModal.js';
-import StoryModal from '../StoryModal/';
-import './story.css'
-
+import { uploadImg } from '../../api/thumbsnap.js';
+import StoryModal from '../Modal/StoryModal/';
+import './story.css';
 
 class Story extends HTMLElement {
-  constructor() {
+  constructor(account) {
     super();
 
+    this.account = account;
+
+    this.handleFinishButtonClicked = this.handleFinishButtonClicked.bind(this);
+  }
+
+  connectedCallback() {
+    document.addEventListener(
+      'finishButtonClicked',
+      this.handleFinishButtonClicked
+    );
     this.loadDatas();
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener(
+      'finishButtonClicked',
+      this.handleFinishButtonClicked
+    );
   }
 
   async loadDatas() {
     try {
-      this.data = await getProfiles();
+      this.propfileData = await getProfiles();
       this.render();
       const canvasElements = this.querySelectorAll('canvas');
       canvasElements.forEach((canvasElement) => {
@@ -25,11 +47,15 @@ class Story extends HTMLElement {
     }
   }
 
+  handleFinishButtonClicked(event) {
+    this.addStory(event.detail);
+  }
+
   render() {
     let translateXValue = -15;
     let storyHTML = `<ul class="container">`;
 
-    this.data.forEach((story) => {
+    this.propfileData.forEach((story) => {
       storyHTML += `
         <li class="slider" style="transform: translateX(${translateXValue}px);">
           <div class="story-container">
@@ -49,8 +75,12 @@ class Story extends HTMLElement {
       translateXValue += 80;
     });
 
+    storyHTML += `</ul>`;
+    this.innerHTML = storyHTML;
 
-    storyHTML += `
+    if (this.account) {
+      const storyUl = this.querySelector('.container');
+      storyUl.innerHTML += `
       <li class="slider" style="transform: translateX(${translateXValue}px);">
         <div class="story-container">
           <div class="story" id="add-story" data-bs-toggle="modal" data-bs-target="#swapModal">
@@ -60,20 +90,16 @@ class Story extends HTMLElement {
           </div>
         </div>
       </li>
-    `;
-
-    storyHTML += `</ul>`;
-    this.innerHTML = storyHTML;
-
-    // 피니시 버튼 클릭한게 도착하면 이벤트 발생
-    document.addEventListener('finishButtonClicked', (event) => {
-      this.addStory(event.detail);
-    }, false);
+      `;
+    }
 
     // 스토리 추가버튼 누르면 모달창 띄우기
-    this.querySelector('#add-story').addEventListener('click', () => {
-      exchangeModal(new StoryModal('main'));
-    });
+
+    if (this.account) {
+      this.querySelector('#add-story').addEventListener('click', () => {
+        exchangeModal(new StoryModal('main'));
+      });
+    }
 
     // 캔버스 그리기
     const canvasElements = this.querySelectorAll('canvas');
@@ -99,51 +125,59 @@ class Story extends HTMLElement {
     ctx.strokeStyle = gradient;
     ctx.beginPath();
     ctx.arc(centerX, centerY, 31, 0, 360, false);
-    ctx.stroke(); 
+    ctx.stroke();
   }
 
   // 스토리 추가할때 기본값 넘겨주기
-  addStory(detail) {
-
-    const testId = 7;
-    const background = detail.background;
+  async addStory(detail) {
+    const Id = this.account.id;
     const text = detail.text;
     const color = detail.textColor;
+    let background = '';
 
-    this.addStoryView(testId, background, text, color);
+    if (detail.background.type) {
+      background = await uploadImg(detail.background);
+    } else {
+      background = detail.background;
+    }
+
+    this.addStoryView(Id, background, text, color);
   }
 
   // 스토리 추가
-  async addStoryView(testId, background, text, textColor) {
+  async addStoryView(Id, background, text, textColor) {
     try {
-      let data = await getProfileById(testId);
+      let data = await getProfileById(Id);
 
       data.storyImg.push(background);
       data.storyText.push({ text, color: textColor });
 
-      await updateProfile(testId, data.storyImg, data.storyText);
+      await updateProfile(data);
     } catch (error) {
-      if (error.status === 404) {
-        const data = await getAccountById(testId);
-        const appendData = {
-          ...data,
-          storyImg: [...(data.storyImg || []), background],
-          storyText: [...(data.storyText || []), { text, color: textColor }],
+      if (error === '404') {
+        const storyImg = [background];
+        const storyText = [{ text, color: textColor }];
+
+        const post = {
+          userId: this.account.id,
+          name: this.account.nickname,
+          img: this.account.img,
+          storyImg: storyImg,
+          storyText: storyText,
         };
-        await postProfile(appendData);
+
+        await postProfile(post);
       } else {
         console.error(error);
       }
     }
-    
-    while (this.firstChild) {
-      this.removeChild(this.firstChild);
-    }
+
+    this.innerHTML = '';
 
     this.loadDatas();
-
   }
-
 }
 
 window.customElements.define('story-component', Story);
+
+export default Story;

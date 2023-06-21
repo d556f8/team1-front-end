@@ -1,0 +1,9 @@
+<svg width="720" height="720" viewBox="0 0 720 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="4.5" y="4.5" width="711" height="711" rx="96.5" fill="white" stroke="black" stroke-width="9"/>
+<rect x="68.0306" y="152.356" width="305" height="305" rx="64" transform="rotate(-13.5241 68.0306 152.356)" fill="white" stroke="black" stroke-width="10"/>
+<rect x="417.667" y="215.527" width="305" height="305" rx="64" transform="rotate(22.3823 417.667 215.527)" fill="white" stroke="black" stroke-width="10"/>
+<path d="M501.332 354.093L558.505 429.206C565.499 438.394 559.923 451.707 548.469 453.17L454.833 465.127C443.379 466.59 434.637 455.105 439.097 444.454L475.56 357.384C480.02 346.733 494.338 344.905 501.332 354.093Z" fill="white" stroke="black" stroke-width="10"/>
+<circle cx="166.5" cy="220.5" r="30" fill="white" stroke="black" stroke-width="7"/>
+<rect x="271.212" y="151.354" width="52" height="52" rx="10.5" transform="rotate(16.6028 271.212 151.354)" fill="white" stroke="black" stroke-width="7"/>
+<path d="M127 378L183.28 291.972C190.759 280.539 206.26 277.647 217.359 285.614L280.616 331.021C290.163 337.875 303.477 335.559 310.149 325.884L348 271L392.418 216.514" stroke="black" stroke-width="6"/>
+</svg>

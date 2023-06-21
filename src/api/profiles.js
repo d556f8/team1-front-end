@@ -1,10 +1,14 @@
+const JSON_SERVER_URL = process.env.JSON_SERVER_URL;
 /**
  * 서버에서 프로필 목록을 가져옵니다.
  * @returns {Promise<Profile[]>} 프로필 목록
  */
 export async function getProfiles() {
-  const res = await fetch('http://localhost:7000/profiles');
+  const res = await fetch(`${JSON_SERVER_URL}/profiles`);
   const data = await res.json();
+  if (!res.ok) {
+    throw new Error(`Failed to fetch profiles, ${res.status}`);
+  }
   return data;
 }
 
@@ -14,12 +18,12 @@ export async function getProfiles() {
  * @returns {Promise<{}>} 프로필
  */
 export async function getProfileById(id) {
-  const res = await fetch(`http://localhost:7000/profiles/${id}`);
-  if (!res.ok) {
-    throw res;
+  const data = await getProfiles();
+  const newData = data.find((profile) => profile.userId === id);
+  if (!newData) {
+    throw '404';
   }
-  const data = await res.json();
-  return data;
+  return newData;
 }
 
 /**
@@ -29,14 +33,20 @@ export async function getProfileById(id) {
  * @param {*} storyText
  * @returns {Promise<{}>} 업데이트된 프로필
  */
-export async function updateProfile(id, storyImg, storyText) {
-  const res = await fetch(`http://localhost:7000/profiles/${id}`, {
+export async function updateProfile(data) {
+  const res = await fetch(`${JSON_SERVER_URL}/profiles/${data.id}`, {
     method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ storyImg, storyText }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   });
-  const data = await res.json();
-  return data;
+
+  if (!res.ok) {
+    throw new Error(`Failed to update profile, ${res.status}`);
+  }
+
+  return res.json
 }
 
 /**
@@ -45,11 +55,11 @@ export async function updateProfile(id, storyImg, storyText) {
  * @returns {Promise<{}>} 삭제된 프로필
  */
 export async function deleteProfile(id) {
-  const res = await fetch(`http://localhost:7000/profiles/${id}`, {
+  const data = await getProfiles();
+  const newData = data.find((profile) => profile.userId === id);
+  await fetch(`${JSON_SERVER_URL}/profiles/${newData.id}`, {
     method: 'DELETE',
   });
-  const data = await res.json();
-  return data;
 }
 
 /**
@@ -58,10 +68,15 @@ export async function deleteProfile(id) {
  * @returns
  */
 export async function postProfile(data) {
-  const res = await fetch(`http://localhost:7000/profiles`, {
+  const res = await fetch(`${JSON_SERVER_URL}/profiles`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
+
+  if (!res.ok) {
+    throw new Error(`Server responded with status: ${res.status}`);
+  }
+
   return res.json();
 }

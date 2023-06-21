@@ -98,26 +98,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  object-fit: contain;
+  object-fit: cover;
+  background-size: cover;
 }
 
 .card .main-container .items {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
-.card .main-container .items .carousel.slide {
 .card .main-container .items .carousel.slide {
   height: 100%;
 }
 
-.card .main-container .items .carousel.slide .carousel-inner {
 .card .main-container .items .carousel.slide .carousel-inner {
   width: 100%;
   height: 100%;
 }
 
-.card .main-container .items .carousel.slide .carousel-inner .carousel-item {
 .card .main-container .items .carousel.slide .carousel-inner .carousel-item {
   width: 100%;
   height: 100%;
@@ -168,7 +167,7 @@
   margin: 6px;
 }
 
-/* 좋아요 수 ( 서버에서 변수로 받아와 적용)  */
+/* 좋아요 수 (서버에서 변수로 받아와 적용)  */
 .card .post-footer .user-count .count-like {
   font-size: 15px;
   font-weight: 900;
@@ -206,7 +205,8 @@
   overflow: hidden;
   line-height: 0.5em;
 }
-/* 더보기 토굴  */
+
+/* 더보기 토글 */
 .card .post-footer .user-write .user-tag .post-content.user-tag-on {
   height: auto;
 }
@@ -264,196 +264,4 @@ button:hover {
 }
 button:active {
   color: rgb(174, 174, 174);
-}
-
-/* 🟢 모달  🟢*/
-
-/* COMMON */
-.button-custom {
-  color: rgb(54, 120, 226);
-  background: #00000000;
-  font-size: 25px;
-  font-weight: 900;
-  border: none;
-  outline: none;
-  padding: 0;
-}
-.button-custom:hover {
-  color: rgb(0, 0, 0);
-  background: #00000000;
-}
-.button-custom:active {
-  background: #00000000;
-  color: rgb(174, 174, 174);
-}
-
-/* 1. LEFT */
-.modal .modal-body .modal-left {
-.modal .modal-body .modal-left {
-  background: #ffef5c;
-  width: 55%;
-  margin: 0 auto;
-  overflow: auto;
-}
-
-/* 2. RIGHT */
-.modal .modal-body .modal-right {
-.modal .modal-body .modal-right {
-  /* background: #ffae5c; */
-  width: 45%;
-}
-
-/* 🟢 TOP - 10% */
-.modal .modal-body .modal-right .right-top {
-  width: 100%;
-  height: 10%;
-  box-sizing: border-box;
-  border-bottom: solid 1px rgba(161, 160, 160, 0.486);
-}
-.modal-body .modal-right .right-top-container {
-  margin-left: 10px;
-  height: 100%;
-  /* width: 50\; */
-  display: flex;
-}
-.modal-body .modal-right .right-top-container .right-top-userimage {
-  width: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal-body .modal-right .right-top-container .right-top-userimage .top-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-.modal-body .modal-right .right-top-container .top-item-account {
-  width: 25%;
-  text-align: center;
-  margin: auto 0;
-  padding-left: 30px;
-}
-.modal-body .modal-right .right-top-container .top-item-account .name {
-  font-size: 25px;
-  font-weight: 900;
-}
-
-/* 🟢  2. MIDDLE 75% */
-.modal-right .modal-middle {
-.modal-right .modal-middle {
-  width: 100%;
-  height: 75%;
-  overflow: auto;
-  margin-top: 10px;
-  box-sizing: border-box;
-  /* margin: 0 auto; */
-  font-size: 20px;
-  /* background: rgb(0, 38, 255); */
-  overflow: auto;
-  border-bottom: solid 1px rgba(161, 160, 160, 0.486);
-}
-
-/* 방문자 글 한줄 */
-.modal-right .modal-middle .visitor-post {
-  height: auto;
-  width: 100%;
-  /* background: blueviolet; */
-  display: flex;
-  align-items: center;
-  word-wrap: break-word;
-  margin-bottom: 15px;
-}
-.modal-right .modal-middle .visitor-post .visitor-imgBox {
-.modal-right .modal-middle .visitor-post .visitor-imgBox {
-  width: 100px;
-}
-
-.modal-right .modal-middle .visitor-post .visitor-imgBox .visitor-img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin: 0 10px 0;
-}
-
-.modal-right .modal-middle .visitor-post .comment {
-  /* width: 100%; */
-  height: auto;
-  /* background: rgb(246, 212, 107); */
-  display: block;
-  align-items: center;
-  margin-right: 20px;
-  float: left;
-  line-height: 1.2;
-}
-.modal-right .modal-middle .visitor-post .comment .visitor-id {
-  font-size: 30px;
-  font-weight: 900;
-}
-
-/* 🟢 하트 좋아요 5% */
-.modal-right .heart {
-.modal-right .heart {
-  /* border-top: solid 1px rgba(161, 160, 160, 0.486); */
-  height: 5%;
-  display: flex;
-  align-items: center;
-}
-.modal-right .heart .hearimg {
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-}
-.modal-body .modal-right .heart .user-count {
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  font-size: 17px;
-}
-
-/*  🟢 BOTTOM  5% */
-.modal-right .modal-comment {
-  /* background: #fb3480; */
-  width: 100%;
-  height: 8%;
-  display: flex;
-  align-items: center;
-  /* position: relative; */
-}
-.modal-right .modal-comment .modal_bottom {
-  border-top: solid 1px rgba(161, 160, 160, 0.486);
-  /* position: absolute;
-  bottom: 1px; */
-  width: 100%;
-  display: flex;
-  /* padding-top: 10px; */
-  box-sizing: border-box;
-}
-.modal-right .modal-comment .modal-comment-input {
-  width: 85%;
-  height: 90px;
-  font-size: 18px;
-  margin-right: 10px;
-  border: none;
-  outline: none;
-  background: rgba(246, 246, 246, 0);
-  overflow: auto;
-  word-wrap: break-word;
-}
-.modal-right .modal-comment .posting-push {
-  width: 12%;
-  text-align: center;
-  line-height: 100px;
-  /* -------- */
-  width: 12%;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-.button-custom.show_All {
-  font-size: 14px;
-  color: rgb(115, 115, 115);
-  /* position: relative; */
-  /* left: 1px; */
-  --bs-btn-active-bg: none;
-  width: 100px;
 }
