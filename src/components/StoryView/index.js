@@ -98,6 +98,13 @@ class StoryView extends HTMLDivElement {
     }
 
     this.sizeChange(); // 사이즈 변경
+    this.textAreaResize();
+
+    // 캐러셀 이동할때 사이즈 변경해주기
+    const myCarousel = document.querySelector('#carouselAuto');
+    myCarousel.addEventListener('slid.bs.carousel', () => {
+      this.textAreaResize();
+    });
 
     const editStory = this.querySelector('#edit-story');
     const deleteStory = this.querySelector('#del-story');
@@ -116,14 +123,6 @@ class StoryView extends HTMLDivElement {
     // 삭제 버튼 클릭시
     deleteStory.addEventListener('click', () => {
       this.deleteCarouselImg();
-    });
-
-    this.textAreaResize();
-
-    // 캐러셀 이동할때 사이즈 변경해주기
-    const myCarousel = document.querySelector('#carouselAuto');
-    myCarousel.addEventListener('slid.bs.carousel', () => {
-      this.textAreaResize();
     });
   }
 
