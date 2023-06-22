@@ -1,15 +1,176 @@
 {
   "accounts": [
     {
-      "name": "김지훈",
-      "nickname": "hetame",
-      "password": "8946",
+      "name": "이주현",
+      "nickname": "d556f8",
+      "password": "123qwe",
       "img": "https://www.svgrepo.com/show/311063/person.svg",
       "id": 1,
-      "userToken": "bLxvoQaBsQnu1F3pllLq"
+      "userToken": "7Wnu0HbUMcarGm4K2XtS"
+    },
+    {
+      "name": "김지훈",
+      "nickname": "hetame",
+      "password": "123qwe",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "id": 2,
+      "userToken": "F48udoqnKedPJ5NbteTv"
+    },
+    {
+      "name": "임서연",
+      "nickname": "imsy",
+      "password": "123qwe",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "id": 3,
+      "userToken": "H4vfT8jbkRX5odT71m5b"
+    },
+    {
+      "name": "하현진",
+      "nickname": "hahyeon",
+      "password": "123qwe",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "id": 4,
+      "userToken": "NP8rxEyPDRBNfUczQfbh"
+    },
+    {
+      "name": "장준호",
+      "nickname": "jjho",
+      "password": "123qwe",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "id": 5,
+      "userToken": "iiKntEX7A9X2RGBXv8fq"
+    },
+    {
+      "name": "이재일",
+      "nickname": "ichiban",
+      "password": "123qwe",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "id": 6,
+      "userToken": "FKIitwK3n3Kt3rShsBT3"
     }
   ],
-  "profiles": [],
+  "profiles": [
+    {
+      "userId": 2,
+      "name": "hetame",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/K81bcSbr.jpg",
+        "center center / cover no-repeat rgb(255, 255, 255)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "이름: 김지훈\n맡은 업무: 스토리 조원소개, 스토리 페이지\n깃허브주소: https://github.com/hetame1\n한마디: 프론트엔드 좋아하는 김지훈입니다",
+          "color": ""
+        }
+      ],
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "name": "d556f8",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/RWje9MYb.png",
+        "center center / cover no-repeat rgb(189, 178, 255)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "이름: 이주현\n맡은 업무: Nav 컴포넌트, 검색 모달, 게시글 작성 모달\r\n깃허브주소: https://github.com/d556f8\n한마디: 좋게 봐주세요!",
+          "color": ""
+        }
+      ],
+      "id": 2
+    },
+    {
+      "userId": 6,
+      "name": "ichiban",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/EkmzHtEN.jpg",
+        "center center / cover no-repeat rgb(253, 255, 182)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "@이재일\n# 프론트앤드\n#소프트뱅크",
+          "color": ""
+        }
+      ],
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "name": "imsy",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/AgePMNN7.jpg",
+        "center center / cover no-repeat rgb(255, 214, 165)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "@임서연\n오른쪽 카테고리\nhttps://github.com/Lsy04178\n1학기 모두 수고 하셨습니다\n\n뿡-",
+          "color": ""
+        }
+      ],
+      "id": 4
+    },
+    {
+      "userId": 4,
+      "name": "hahyeon",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/F9eE5ikZ.jpg",
+        "center center / cover no-repeat rgb(160, 196, 255)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "@하현진\n# 회원가입페이지\n# https://github.com/HyunjinHa\n# 더위 조심들 하세요",
+          "color": ""
+        }
+      ],
+      "id": 5
+    },
+    {
+      "userId": 5,
+      "name": "jjho",
+      "img": "https://www.svgrepo.com/show/311063/person.svg",
+      "storyImg": [
+        "https://thumbsnap.com/i/7PjhRFbj.jpg",
+        "center center / cover no-repeat rgb(255, 173, 173)"
+      ],
+      "storyText": [
+        {
+          "text": "",
+          "color": ""
+        },
+        {
+          "text": "@장준호\n로그인페이지\nhttps://github.com/2201400\n다들 행복하셨음 좋겠습니다",
+          "color": ""
+        }
+      ],
+      "id": 6
+    }
+  ],
   "posts": [
     {
       "name": "go_school_yju",
@@ -57,9 +218,7 @@
       "name": "go_school_yju",
       "post_content": " 여름에 성수기 후쿠오카 우리는 학교지원으로 출발~!",
       "post_top_img": "https://i.ibb.co/S00HZYG/yj.png",
-      "post_main_img": [
-        "https://i.ibb.co/7nkgW5s/001-1.jpg"
-      ],
+      "post_main_img": ["https://i.ibb.co/7nkgW5s/001-1.jpg"],
       "statements": [],
       "likes": 136,
       "id": 9,
@@ -218,27 +377,12 @@
       "name": "FUKUOKA_Oishī",
       "post_content": " 일본 하면 라면! 하카타역 라멘 맛집 나가하마 ",
       "post_top_img": "https://i.ibb.co/2nxdtJ0/fukuokao.png",
-      "post_main_img": [
-        "https://i.ibb.co/ZN6VzbG/IMG-3346.jpg"
-      ],
+      "post_main_img": ["https://i.ibb.co/ZN6VzbG/IMG-3346.jpg"],
       "statements": [],
       "likes": 34,
       "id": 17,
       "category": 3,
       "comments": []
-    },
-    {
-      "name": "d556f8",
-      "post_content": "#jp_mood\n#raw_japan\n#photo_map\n#photo_jpn\n#as_archive\n#light_nikon\n#japanawaits\n#genic_japan\n#raw_world\n#jp_portrait部\n#tokyocamelaclub\n#japan_travel\n#daily_photo_jpn\n#その瞬間に物語を\n#撮りたい世界が地元にある\n#zcreators\n#nikoncreators👏",
-      "post_top_img": "https://github.com/d556f8.png",
-      "post_main_img": [
-        "https://thumbsnap.com/i/xTqxQWnn.jpg"
-      ],
-      "statements": [],
-      "likes": 0,
-      "id": 19,
-      "comments": [
-      ]
     }
   ],
   "categories": [
