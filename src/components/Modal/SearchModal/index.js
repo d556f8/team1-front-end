@@ -48,26 +48,22 @@ class SearchModal extends HTMLDivElement {
   renderContents(contents, keyword) {
     this.contentList.innerHTML = ``;
     contents.forEach((content) => {
-      const newPostContent = highlight(content.post_content, keyword);
-
-      const newContent = { ...content, post_content: newPostContent };
-
-      this.contentList.appendChild(new Content(newContent));
+      this.contentList.appendChild(new Content(content, keyword));
     });
   }
 }
 
 class Content extends HTMLDivElement {
-  constructor(post) {
+  constructor(post, keyword = '') {
     super();
     this.classList.add('content-item');
 
-    this.post = post;
+    const { post_content, post_top_img, name } = post;
 
     this.innerHTML = `
-      <span class="content">${post.post_content}</span>
-      <img src="${post.post_top_img}" alt="">
-      <span class="username">${post.name}</span>
+      <span class="content">${highlight(post_content, keyword)}</span>
+      <img src="${post_top_img}" alt="">
+      <span class="username">${name}</span>
     `;
 
     this.addEventListener('click', () => {

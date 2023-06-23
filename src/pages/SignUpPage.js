@@ -80,7 +80,7 @@ class SignUpPage extends HTMLDivElement {
 
     const isExist = await getAccountByNickname(nickname);
 
-    if (isExist) return alert('이미 존재하는 닉네임입니다.');
+    if (isExist) return alert('이미 존재하는 유저네임입니다.');
 
     const formData = {
       name,
