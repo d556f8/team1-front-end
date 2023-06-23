@@ -226,6 +226,7 @@ class CarouselImg {
         if (/^http.*/.test(this.data.post_main_img[i])) {
           img.style.background = `url(${this.data.post_main_img[i]})`;
           img.style.backgroundRepeat = 'no-repeat';
+          img.style.backgroundSize = 'cover';
         } else {
           img.style.background = this.data.post_main_img[i];
         }
